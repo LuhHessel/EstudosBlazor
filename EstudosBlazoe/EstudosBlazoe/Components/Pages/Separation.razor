@@ -1,0 +1,19 @@
+﻿@page "/Separations"
+@rendermode InteractiveServer
+
+<h3>Separations</h3>
+
+<div>
+    <p>HTML: Eu sou o HTML</p>
+</div>
+
+<div>
+    <p>C#: @DateTime.Now.ToString("dd/MM/yyyy")</p> - @Texto
+</div>
+
+<div>
+    <button class="btn btn-success" @onclick="CarregarJS">Carregar JS</button>
+
+    <button class="btn btn-primary" onclick="javascript:alert('Clicou no botão JS Inline');">Botão JS</button>
+    <button class="btn btn-primary" onclick="ShowMessage()">Botão JS</button>
+</div>

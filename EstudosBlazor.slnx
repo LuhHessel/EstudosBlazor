@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EstudosBlazoe/EstudosBlazoe.Client/EstudosBlazoe.Client.csproj" />
+  <Project Path="EstudosBlazoe/EstudosBlazoe/EstudosBlazoe.csproj" />
+</Solution>

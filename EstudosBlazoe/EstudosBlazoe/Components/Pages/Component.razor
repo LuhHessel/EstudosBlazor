@@ -1,0 +1,63 @@
+﻿@inject IJSRuntime JS
+@rendermode InteractiveServer
+@page "/Component"
+
+<h3>Component</h3>
+
+<div class="row">
+    <div class="col-md-4">
+    
+        <BootstrapCard 
+            EventClick="@((e) => EventClick_1(e))"
+            Title="Título do Cartão"
+            Description="Esse é um cartão"
+            ButtonText="Comprar" 
+            />
+    </div>
+
+    <div class="col-md-4">
+        <BootstrapCard 
+            EventClick="EventClick_2"
+            Title="Título do Cartão"
+            Description="Esse é um cartão"
+            ButtonText="Comprar" />
+    </div>
+
+    <div class="col-md-4">
+        <BootstrapCard>
+            <h4>Eu sou o ChildContent</h4>
+            <p>Olá Mundo</p>
+            <button class="btn btn-primary" @onclick="EventClick_1">Clique</button>
+        </BootstrapCard>
+    </div>
+    
+    <div class="col-md-4">
+        <CascadingValue Name="CardHeaderButtonText" Value="@("Editar")">
+            <BootstrapCard>
+                <CardHeader>Cabeçalho</CardHeader>
+                <CardText>Corpo do texto</CardText>
+                <CArdFooter>Rodape</CArdFooter>
+            </BootstrapCard>
+        </CascadingValue>
+    </div>
+
+    
+</div>
+<div class="col-md-3">
+    <InputString Placeholder="Digite seu texto" class="form-control" maxlength="5" autocomplete="off"></InputString>
+</div>
+
+
+@code {
+
+    public void EventClick_1(MouseEventArgs e)
+    {
+        JS.InvokeVoidAsync("alert", $"Card 1 - {e.ScreenY}");
+    }
+
+    public void EventClick_2()
+    {
+        JS.InvokeVoidAsync("alert", "Card 2");
+
+    }
+}

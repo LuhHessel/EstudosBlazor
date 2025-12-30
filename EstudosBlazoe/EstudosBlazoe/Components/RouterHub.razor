@@ -1,0 +1,46 @@
+﻿@page "/router"
+@page "/router/{group?}/{id:int?}"
+
+@page "/Routing/{*all}"
+@attribute [Route(RouterConstants.RouterHub)]
+
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<h3>RouterHub</h3>
+<div>
+    Grupo: @Group
+    <br />
+    Id: @Id
+    <br />
+    Todos: @All (QueryString: @Name - @Name2)
+    <br />
+    <input @bind="Router" class="form-cotnrol" />
+    <br />
+    <button @onclick="OnClick" class="btn btn-primary mt-2">Navegar</button>
+
+</div>
+
+@code {
+    public string? Router {get; set;}
+
+    [Parameter]
+    public string? All { get; set; }
+
+    [Parameter]
+    public string? Group { get; set; }
+
+    [Parameter]
+    public int? Id { get; set; }
+
+    [SupplyParameterFromQuery]
+    public string? Name { get; set; }
+
+    [SupplyParameterFromQuery(Name = "dono")]
+    public string? Name2 { get; set; }
+
+    public void OnClick()
+    {
+        Navigation.NavigateTo(Router!);
+    }
+}
