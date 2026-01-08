@@ -1,0 +1,29 @@
+﻿@page "/DependecyInjection"
+@inject NumeroAleatorio NumeroAleatorioUm
+@inject NumeroAleatorio NumeroAleatorioDois
+@inject IMensagem MensagemSimples
+
+
+<h3>DependecyInjection</h3>
+<div class="row">
+    <div class="col-6">
+        Valor 1: @NumeroAleatorioUm.NumeroIdentificador
+    </div>
+    <div class="col-6">
+        Valor 2: @NumeroAleatorioDois.NumeroIdentificador
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        Mensagem Email Enviada: @MensagemSimples.Enviar("Mensagem")
+    </div>
+    <div class="col-4">
+        Mensagem @MensagemSimples.Enviar("Mensagem");
+    </div>
+    <div class="col-4">
+    </div>
+</div>
+
+@code {
+
+}

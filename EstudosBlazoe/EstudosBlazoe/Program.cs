@@ -1,5 +1,6 @@
 using EstudosBlazoe.Client.Pages;
 using EstudosBlazoe.Components;
+using EstudosBlazoe.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddSingleton<NumeroAleatorio>();
+builder.Services.AddSingleton<IMensagem, MensagemEmail>();
+builder.Services.AddKeyedSingleton<IMensagem, MensagemWhatsApp>("WhatsApp");
+builder.Services.AddKeyedSingleton<IMensagem, MensagemSMS>("sms");
 
 var app = builder.Build();
 
